@@ -1,0 +1,81 @@
+--- data/processed/nav_history_clean.csv ---
+Row count: 46000
+Column count: 3
+Columns: amfi_code, date, nav
+Date range: 2022-01-03 to 2026-05-29
+Missing %:
+{'amfi_code': 0.0, 'date': 0.0, 'nav': 0.0}
+
+
+--- data/processed/category_inflows_clean.csv ---
+Row count: 144
+Column count: 3
+Columns: month, category, net_inflow_crore
+Missing %:
+{'month': 0.0, 'category': 0.0, 'net_inflow_crore': 0.0}
+
+
+--- data/processed/aum_by_fund_house_clean.csv ---
+Row count: 90
+Column count: 5
+Columns: date, fund_house, aum_lakh_crore, aum_crore, num_schemes
+Date range: 2022-03-31 to 2025-12-31
+Missing %:
+{'date': 0.0, 'fund_house': 0.0, 'aum_lakh_crore': 0.0, 'aum_crore': 0.0, 'num_schemes': 0.0}
+
+
+--- data/processed/industry_folio_count_clean.csv ---
+Row count: 21
+Column count: 6
+Columns: month, total_folios_crore, equity_folios_crore, debt_folios_crore, hybrid_folios_crore, others_folios_crore
+Missing %:
+{'month': 0.0, 'total_folios_crore': 0.0, 'equity_folios_crore': 0.0, 'debt_folios_crore': 0.0, 'hybrid_folios_crore': 0.0, 'others_folios_crore': 0.0}
+
+
+--- data/processed/monthly_sip_inflows_clean.csv ---
+Row count: 48
+Column count: 6
+Columns: month, sip_inflow_crore, active_sip_accounts_crore, new_sip_accounts_lakh, sip_aum_lakh_crore, yoy_growth_pct
+Missing %:
+{'month': 0.0, 'sip_inflow_crore': 0.0, 'active_sip_accounts_crore': 0.0, 'new_sip_accounts_lakh': 0.0, 'sip_aum_lakh_crore': 0.0, 'yoy_growth_pct': 25.0}
+
+
+--- data/processed/scheme_performance_clean.csv ---
+Row count: 40
+Column count: 20
+Columns: amfi_code, scheme_name, fund_house, category, plan, return_1yr_pct, return_3yr_pct, return_5yr_pct, benchmark_3yr_pct, alpha, beta, sharpe_ratio, sortino_ratio, std_dev_ann_pct, max_drawdown_pct, aum_crore, expense_ratio_pct, morningstar_rating, risk_grade, expense_ratio_anomaly_flag
+Missing %:
+{'amfi_code': 0.0, 'scheme_name': 0.0, 'fund_house': 0.0, 'category': 0.0, 'plan': 0.0, 'return_1yr_pct': 0.0, 'return_3yr_pct': 0.0, 'return_5yr_pct': 0.0, 'benchmark_3yr_pct': 0.0, 'alpha': 0.0, 'beta': 0.0, 'sharpe_ratio': 0.0, 'sortino_ratio': 0.0, 'std_dev_ann_pct': 0.0, 'max_drawdown_pct': 0.0, 'aum_crore': 0.0, 'expense_ratio_pct': 0.0, 'morningstar_rating': 0.0, 'risk_grade': 0.0, 'expense_ratio_anomaly_flag': 0.0}
+
+
+--- data/processed/benchmark_indices_clean.csv ---
+Row count: 8050
+Column count: 3
+Columns: date, index_name, close_value
+Date range: 2022-01-03 to 2026-05-29
+Missing %:
+{'date': 0.0, 'index_name': 0.0, 'close_value': 0.0}
+
+
+--- data/processed/portfolio_holdings_clean.csv ---
+Row count: 322
+Column count: 8
+Columns: amfi_code, stock_symbol, stock_name, sector, weight_pct, market_value_cr, current_price_inr, portfolio_date
+Missing %:
+{'amfi_code': 0.0, 'stock_symbol': 0.0, 'stock_name': 0.0, 'sector': 0.0, 'weight_pct': 0.0, 'market_value_cr': 0.0, 'current_price_inr': 0.0, 'portfolio_date': 0.0}
+
+
+--- data/processed/investor_transactions_clean.csv ---
+Row count: 32778
+Column count: 13
+Columns: investor_id, transaction_date, amfi_code, transaction_type, amount_inr, state, city, city_tier, age_group, gender, annual_income_lakh, payment_mode, kyc_status
+Missing %:
+{'investor_id': 0.0, 'transaction_date': 0.0, 'amfi_code': 0.0, 'transaction_type': 0.0, 'amount_inr': 0.0, 'state': 0.0, 'city': 0.0, 'city_tier': 0.0, 'age_group': 0.0, 'gender': 0.0, 'annual_income_lakh': 0.0, 'payment_mode': 0.0, 'kyc_status': 0.0}
+
+
+--- data/processed/fund_master_clean.csv ---
+Row count: 40
+Column count: 15
+Columns: amfi_code, fund_house, scheme_name, category, sub_category, plan, launch_date, benchmark, expense_ratio_pct, exit_load_pct, min_sip_amount, min_lumpsum_amount, fund_manager, risk_category, sebi_category_code
+Missing %:
+{'amfi_code': 0.0, 'fund_house': 0.0, 'scheme_name': 0.0, 'category': 0.0, 'sub_category': 0.0, 'plan': 0.0, 'launch_date': 0.0, 'benchmark': 0.0, 'expense_ratio_pct': 0.0, 'exit_load_pct': 0.0, 'min_sip_amount': 0.0, 'min_lumpsum_amount': 0.0, 'fund_manager': 0.0, 'risk_category': 0.0, 'sebi_category_code': 0.0}

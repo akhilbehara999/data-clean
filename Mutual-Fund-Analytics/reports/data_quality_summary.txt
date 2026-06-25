@@ -1,0 +1,196 @@
+1. Dataset Inventory & 2. Schema Summary
+=========================================
+Dataset Name                   | Rows     | Cols   | Size (KB)  | Missing %  | Potential Keys
+--------------------------------------------------------------------------------------------------------------
+01_fund_master.csv             | 40       | 15     | 6.66       | 0.00       | amfi_code, fund_house, category, sub_category, launch_date, risk_category, sebi_category_code
+
+  [Schema for 01_fund_master.csv]
+   - amfi_code: int64
+   - fund_house: str
+   - scheme_name: str
+   - category: str
+   - sub_category: str
+   - plan: str
+   - launch_date: str
+   - benchmark: str
+   - expense_ratio_pct: float64
+   - exit_load_pct: float64
+   - min_sip_amount: int64
+   - min_lumpsum_amount: int64
+   - fund_manager: str
+   - risk_category: str
+   - sebi_category_code: str
+--------------------------------------------------------------------------------------------------------------
+02_nav_history.csv             | 46000    | 3      | 1190.99    | 0.00       | amfi_code, date
+
+  [Schema for 02_nav_history.csv]
+   - amfi_code: int64
+   - date: str
+   - nav: float64
+--------------------------------------------------------------------------------------------------------------
+03_aum_by_fund_house.csv       | 90       | 5      | 3.92       | 0.00       | date, fund_house
+
+  [Schema for 03_aum_by_fund_house.csv]
+   - date: str
+   - fund_house: str
+   - aum_lakh_crore: float64
+   - aum_crore: int64
+   - num_schemes: int64
+--------------------------------------------------------------------------------------------------------------
+04_monthly_sip_inflows.csv     | 48       | 6      | 1.63       | 4.17       | month
+
+  [Schema for 04_monthly_sip_inflows.csv]
+   - month: str
+   - sip_inflow_crore: int64
+   - active_sip_accounts_crore: float64
+   - new_sip_accounts_lakh: float64
+   - sip_aum_lakh_crore: float64
+   - yoy_growth_pct: float64
+--------------------------------------------------------------------------------------------------------------
+05_category_inflows.csv        | 144      | 3      | 3.58       | 0.00       | month, category
+
+  [Schema for 05_category_inflows.csv]
+   - month: str
+   - category: str
+   - net_inflow_crore: float64
+--------------------------------------------------------------------------------------------------------------
+06_industry_folio_count.csv    | 21       | 6      | 0.80       | 0.00       | month, hybrid_folios_crore
+
+  [Schema for 06_industry_folio_count.csv]
+   - month: str
+   - total_folios_crore: float64
+   - equity_folios_crore: float64
+   - debt_folios_crore: float64
+   - hybrid_folios_crore: float64
+   - others_folios_crore: float64
+--------------------------------------------------------------------------------------------------------------
+07_scheme_performance.csv      | 40       | 19     | 6.44       | 0.00       | amfi_code, fund_house, category
+
+  [Schema for 07_scheme_performance.csv]
+   - amfi_code: int64
+   - scheme_name: str
+   - fund_house: str
+   - category: str
+   - plan: str
+   - return_1yr_pct: float64
+   - return_3yr_pct: float64
+   - return_5yr_pct: float64
+   - benchmark_3yr_pct: float64
+   - alpha: float64
+   - beta: float64
+   - sharpe_ratio: float64
+   - sortino_ratio: float64
+   - std_dev_ann_pct: float64
+   - max_drawdown_pct: float64
+   - aum_crore: int64
+   - expense_ratio_pct: float64
+   - morningstar_rating: int64
+   - risk_grade: str
+--------------------------------------------------------------------------------------------------------------
+08_investor_transactions.csv   | 32778    | 13     | 3054.61    | 0.00       | investor_id, transaction_date, amfi_code
+
+  [Schema for 08_investor_transactions.csv]
+   - investor_id: str
+   - transaction_date: str
+   - amfi_code: int64
+   - transaction_type: str
+   - amount_inr: int64
+   - state: str
+   - city: str
+   - city_tier: str
+   - age_group: str
+   - gender: str
+   - annual_income_lakh: float64
+   - payment_mode: str
+   - kyc_status: str
+--------------------------------------------------------------------------------------------------------------
+09_portfolio_holdings.csv      | 322      | 8      | 23.35      | 0.00       | amfi_code, portfolio_date
+
+  [Schema for 09_portfolio_holdings.csv]
+   - amfi_code: int64
+   - stock_symbol: str
+   - stock_name: str
+   - sector: str
+   - weight_pct: float64
+   - market_value_cr: float64
+   - current_price_inr: float64
+   - portfolio_date: str
+--------------------------------------------------------------------------------------------------------------
+10_benchmark_indices.csv       | 8050     | 3      | 245.09     | 0.00       | date
+
+  [Schema for 10_benchmark_indices.csv]
+   - date: str
+   - index_name: str
+   - close_value: float64
+--------------------------------------------------------------------------------------------------------------
+
+Dataset Relationships Mapping
+=============================
+Based on column names, the datasets connect via common keys:
+- `amfi_code` joins: 01_fund_master.csv, 02_nav_history.csv, 07_scheme_performance.csv, 08_investor_transactions.csv, 09_portfolio_holdings.csv
+- `fund_house` joins: 01_fund_master.csv, 03_aum_by_fund_house.csv, 07_scheme_performance.csv
+- `category` joins: 01_fund_master.csv, 05_category_inflows.csv, 07_scheme_performance.csv
+- `date` joins: 02_nav_history.csv, 03_aum_by_fund_house.csv, 10_benchmark_indices.csv
+- `month` joins: 04_monthly_sip_inflows.csv, 05_category_inflows.csv, 06_industry_folio_count.csv
+
+3. Data Quality Assessment
+==========================
+
+4. Missing Values Analysis
+==========================
+- 01_fund_master.csv: No missing values
+- 02_nav_history.csv: No missing values
+- 03_aum_by_fund_house.csv: No missing values
+- 04_monthly_sip_inflows.csv:
+  - yoy_growth_pct: 12 missing values
+- 05_category_inflows.csv: No missing values
+- 06_industry_folio_count.csv: No missing values
+- 07_scheme_performance.csv: No missing values
+- 08_investor_transactions.csv: No missing values
+- 09_portfolio_holdings.csv: No missing values
+- 10_benchmark_indices.csv: No missing values
+
+5. Duplicate Analysis
+=====================
+- 01_fund_master.csv: No duplicate rows
+- 02_nav_history.csv: No duplicate rows
+- 03_aum_by_fund_house.csv: No duplicate rows
+- 04_monthly_sip_inflows.csv: No duplicate rows
+- 05_category_inflows.csv: No duplicate rows
+- 06_industry_folio_count.csv: No duplicate rows
+- 07_scheme_performance.csv: No duplicate rows
+- 08_investor_transactions.csv: No duplicate rows
+- 09_portfolio_holdings.csv: No duplicate rows
+- 10_benchmark_indices.csv: No duplicate rows
+
+6. AMFI Code Validation Results
+===============================
+- Total unique AMFI codes in fund_master: 40
+  - SUCCESS: All AMFI codes in 02_nav_history.csv exist in fund_master.
+  - SUCCESS: All AMFI codes in 07_scheme_performance.csv exist in fund_master.
+  - SUCCESS: All AMFI codes in 08_investor_transactions.csv exist in fund_master.
+  - SUCCESS: All AMFI codes in 09_portfolio_holdings.csv exist in fund_master.
+
+7. NAV History Validation Results
+=================================
+- SUCCESS: All scheme codes in fund_master have NAV history.
+- SUCCESS: No orphan scheme codes in nav_history.
+- SUCCESS: No missing NAV values.
+- NAV History Date Range: 2022-01-03 to 2026-05-29
+
+8. Cross-Dataset Integrity Checks
+=================================
+- SUCCESS: All fund houses in fund_master have corresponding AUM data.
+- SUCCESS: All AMFI codes in investor transactions are valid.
+
+9. Anomalies and Recommendations
+================================
+- Anomaly: 04_monthly_sip_inflows.csv contains missing values in columns: yoy_growth_pct.
+- Recommendation: Impute or handle missing metrics (like YoY growth) appropriately during transformations.
+- Recommendation: Set up automated validation checks to flag orphan AMFI codes and missing NAV dates upon data load.
+
+10. Execution Summary
+=====================
+- Total datasets processed: 10
+- Total rows processed across all datasets: 87533
+- Data ingestion validation completed successfully.
